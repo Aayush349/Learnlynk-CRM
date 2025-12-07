@@ -1,3 +1,53 @@
+LearnLynk CRM - Complete 
+
+
+Home page
+<img width="1919" height="964" alt="image" src="https://github.com/user-attachments/assets/8a9f7583-e3c7-45db-9bcd-7cfe853d2510" />
+Dashboard
+<img width="1894" height="967" alt="image" src="https://github.com/user-attachments/assets/1a353714-76db-4cde-bb6b-e0d9249fdfca" />
+all task page
+<img width="1917" height="916" alt="image" src="https://github.com/user-attachments/assets/b538ec0d-7d6a-45a2-8a00-20a6323ba92d" />
+Supabase dashboard
+<img width="1919" height="919" alt="image" src="https://github.com/user-attachments/assets/0967d83d-6cdc-4d75-9c59-c092d7c8f334" />
+
+File structure 
+learnlynk-crm/
+├── supabase/
+│   ├── functions/
+│   │   └── create-task/
+│   │       └── index.ts
+│   └── migrations/
+│       ├── 001_schema.sql
+│       └── 002_rls_policies.sql
+│
+├── src/
+│   ├── app/
+│   │   ├── dashboard/
+│   │   │   └── today/
+│   │   │       └── page.tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   │
+│   ├── lib/
+│   │   ├── supabase/
+│   │   │   ├── client.ts
+│   │   │   └── server.ts
+│   │   └── types.ts
+│   │
+│   └── components/
+│       ├── TaskTable.tsx
+│       └── LoadingSpinner.tsx
+│
+├── .env.local
+├── .env.example
+├── package.json
+├── tsconfig.json
+├── next.config.js
+├── tailwind.config.ts
+└── README.md
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -6,12 +56,6 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
