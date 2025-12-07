@@ -1,0 +1,34 @@
+// SECTION 5: STRIPE INTEGRATION EXPLANATION
+
+
+STRIPE CHECKOUT IMPLEMENTATION FOR APPLICATION FEE:
+
+1. Create Checkout Session:
+   - Use Stripe.checkout.sessions.create() with line_items for the application fee
+   - Set mode to 'payment' and provide success/cancel URLs
+   - Store session_id and application_id in payment_requests table
+
+2. Store Payment Request:
+   - INSERT into payment_requests table with: application_id, stripe_session_id, 
+     amount, status='pending', created_at
+   - Link to specific application for tracking
+
+3. Handle Stripe Webhook:
+   - Set up /api/webhooks/stripe endpoint
+   - Verify webhook signature using stripe.webhooks.constructEvent()
+   - Listen for 'checkout.session.completed' event
+   - Extract session_id and payment_intent from event
+
+4. Update Payment Status:
+   - UPDATE payment_requests SET status='paid', payment_intent_id, paid_at
+   - WHERE stripe_session_id = event.session_id
+
+5. Update Application Stage:
+   - UPDATE applications SET status='payment_received', payment_confirmed_at
+   - WHERE id = payment_request.application_id
+   - Trigger notification to counselor
+
+6. Update Timeline:
+   - INSERT into application_timeline: event='payment_received', 
+     amount, payment_method, timestamp
+   - Track complete payment history for audit

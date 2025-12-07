@@ -39,3 +39,24 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Dependencies
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Supabase
+.supabase/
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+
+# Environment
+.env*.local
